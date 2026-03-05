@@ -1,5 +1,4 @@
-export default function decorate(block) {
-
+export default function decorate(block){
   const picture = block.querySelector('picture');
   const link = block.querySelector('a');
 
@@ -7,9 +6,7 @@ export default function decorate(block) {
 
   const url = new URL(link.href);
 
-  const videoId =
-    url.searchParams.get('v') ||
-    url.pathname.split('/').pop();
+  const videoId = url.searchParams.get('v') || url.pathname.split('/').pop();
 
   // Create wrapper div
   const wrapper = document.createElement('div');
