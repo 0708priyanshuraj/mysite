@@ -65,7 +65,8 @@ function buildAutoBlocks(main) {
   }
 }
 
-function decorateMain(main) {
+/* ✅ THIS IS THE ONLY CHANGE */
+export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
