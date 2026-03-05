@@ -1,0 +1,68 @@
+/* Accordion Container */
+.accordion details {
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 16px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Summary (Question) */
+.accordion details summary {
+  font-weight: 600;
+  font-size: 18px;
+  padding: 18px 20px;
+  cursor: pointer;
+  position: relative;
+  list-style: none;
+  transition: background 0.3s ease;
+}
+
+/* Hover effect */
+.accordion details summary:hover {
+  background-color: #f5f7fa;
+}
+
+/* Remove default arrow */
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom Arrow */
+/* Custom Arrow */
+.accordion details summary::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+/* When Open */
+.accordion details[open] summary::after {
+  content: '−';
+}
+/* Body */
+.accordion .accordion-item-body {
+  padding: 0 20px 20px 20px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* Smooth Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
