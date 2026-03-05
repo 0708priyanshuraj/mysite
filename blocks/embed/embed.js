@@ -7,23 +7,18 @@ export default function decorate(block) {
   const url = new URL(link.href);
   const videoId = url.searchParams.get('v') || url.pathname.split('/').pop();
 
-  // Create wrapper div
   const wrapper = document.createElement('div');
   wrapper.className = 'embed-placeholder';
 
-  // Move existing image inside wrapper
   wrapper.appendChild(picture);
 
-  // Create play button
   const playBtn = document.createElement('div');
   playBtn.className = 'play-button';
   wrapper.appendChild(playBtn);
 
-  // Clear block and insert wrapper
   block.innerHTML = '';
   block.appendChild(wrapper);
 
-  // When clicked → load video
   wrapper.addEventListener('click', () => {
     block.innerHTML = `
       <div style="position:relative; padding-bottom:56.25%; height:0;">

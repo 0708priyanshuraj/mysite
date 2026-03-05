@@ -11,11 +11,9 @@ function initCarousel() {
   const nextArrow = nextArrowDiv.querySelector('p');
   const prevArrow = prevArrowDiv.querySelector('p');
 
-  // Slides = everything except first & last
   const slides = Array.from(allDivs).slice(1, allDivs.length - 1);
   if (!slides.length) return;
 
-  // Create sliding wrapper
   const slideTrack = document.createElement('div');
   slideTrack.classList.add('slide-track');
 
@@ -32,13 +30,11 @@ function initCarousel() {
     slideTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
 
-  // NEXT
   nextArrow.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateSlide();
   });
 
-  // PREVIOUS
   prevArrow.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateSlide();

@@ -13,19 +13,13 @@ import {
   loadCSS,
 } from './aem.js';
 
-/**
- * Builds hero block and prepends to main in a new section.
- * @param {Element} main The container element
- */
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
 
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    if (h1.closest('.hero') || picture.closest('.hero')) {
-      return;
-    }
+    if (h1.closest('.hero') || picture.closest('.hero')) return;
 
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
@@ -33,30 +27,25 @@ function buildHeroBlock(main) {
   }
 }
 
-/**
- * load fonts.css and set a session storage flag
- */
 async function loadFonts() {
   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
+
   try {
     if (!window.location.hostname.includes('localhost')) {
       sessionStorage.setItem('fonts-loaded', 'true');
     }
   } catch (e) {
-    // do nothing
+    // ignore
   }
 }
 
-/**
- * Builds all synthetic blocks in a container element.
- * @param {Element} main The container element
- */
 function buildAutoBlocks(main) {
   try {
     const fragments = [...main.querySelectorAll('a[href*="/fragments/"]')]
       .filter((f) => !f.closest('.fragment'));
 
     if (fragments.length > 0) {
+      // eslint-disable-next-line import/no-cycle
       import('../blocks/fragment/fragment.js').then(({ loadFragment }) => {
         fragments.forEach(async (fragment) => {
           try {
@@ -64,7 +53,7 @@ function buildAutoBlocks(main) {
             const frag = await loadFragment(pathname);
             fragment.parentElement.replaceWith(...frag.children);
           } catch (error) {
-            console.error('Fragment loading failed', error);
+            // ignore fragment error
           }
         });
       });
@@ -72,15 +61,11 @@ function buildAutoBlocks(main) {
 
     buildHeroBlock(main);
   } catch (error) {
-    console.error('Auto Blocking failed', error);
+    // ignore
   }
 }
 
-/**
- * Decorates the main element.
- * @param {Element} main The main element
- */
-export function decorateMain(main) {
+function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
@@ -88,10 +73,6 @@ export function decorateMain(main) {
   decorateBlocks(main);
 }
 
-/**
- * Loads everything needed to get to LCP.
- * @param {Element} doc The container element
- */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
@@ -109,14 +90,10 @@ async function loadEager(doc) {
       loadFonts();
     }
   } catch (e) {
-    // do nothing
+    // ignore
   }
 }
 
-/**
- * Loads everything that doesn't need to be delayed.
- * @param {Element} doc The container element
- */
 async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
 
@@ -134,20 +111,16 @@ async function loadLazy(doc) {
   loadFonts();
 }
 
-/**
- * Loads everything that happens later
- */
 function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 3000);
 }
 
-/**
- * Page loader
- */
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
 }
+
+export default loadPage;
 
 loadPage();
