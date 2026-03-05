@@ -21,7 +21,7 @@ export default function decorate(block) {
     // Replace row
     row.replaceWith(details);
 
-    // Optional: Open first item by default
+    // Open first item by default
     if (index === 0) {
       details.setAttribute('open', '');
     }
@@ -29,9 +29,8 @@ export default function decorate(block) {
     // Close others when one opens
     details.addEventListener('toggle', () => {
       if (details.open) {
-        items.forEach((otherRow) => {
-          const otherDetails = otherRow.nextElementSibling;
-          if (otherDetails && otherDetails !== details) {
+        block.querySelectorAll('.accordion-item').forEach((otherDetails) => {
+          if (otherDetails !== details) {
             otherDetails.removeAttribute('open');
           }
         });

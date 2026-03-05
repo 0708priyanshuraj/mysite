@@ -1,11 +1,10 @@
-export default function decorate(block){
+export default function decorate(block) {
   const picture = block.querySelector('picture');
   const link = block.querySelector('a');
 
   if (!picture || !link) return;
 
   const url = new URL(link.href);
-
   const videoId = url.searchParams.get('v') || url.pathname.split('/').pop();
 
   // Create wrapper div
@@ -20,12 +19,12 @@ export default function decorate(block){
   playBtn.className = 'play-button';
   wrapper.appendChild(playBtn);
 
-  // Clear block and insert only wrapper
+  // Clear block and insert wrapper
   block.innerHTML = '';
   block.appendChild(wrapper);
 
   // When clicked → load video
-  wrapper.addEventListener('click', function () {
+  wrapper.addEventListener('click', () => {
     block.innerHTML = `
       <div style="position:relative; padding-bottom:56.25%; height:0;">
         <iframe
@@ -37,5 +36,4 @@ export default function decorate(block){
       </div>
     `;
   });
-
 }
