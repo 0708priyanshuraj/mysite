@@ -85,9 +85,17 @@ body.appear {
 }
 
 header {
-  height: var(--nav-height);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
 }
-
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+}
 header .header,
 footer .footer {
   visibility: hidden;
@@ -483,7 +491,7 @@ main .default-content-wrapper picture img:hover {
   }
 }
 
-/*metadata ---------------------*/
+/*Section metadata ---------------------*/
 .section.metadata {
   background: #191818;
   padding: 30px;
