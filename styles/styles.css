@@ -90,12 +90,14 @@ header {
   z-index: 1000;
   background: white;
 }
+
 .header-wrapper {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: white;
 }
+
 header .header,
 footer .footer {
   visibility: hidden;
@@ -264,53 +266,31 @@ main .section.highlight {
   padding: 40px 0;
 }
 
-/* <---------------Custome CSS----------> */
-#welcome-to-my-website- {
+/* <---------------Custom CSS----------> */
+#welcome-to-my-website {
   color: brown;
 }
-#welcome-to-my-site- img {
-  width: 100%;
-  height: 90vh;        /* 90% of screen height */
-  object-fit: cover;   /* Prevents distortion */
-  display: block;
-}
 
-/* button*/
-a.button.secondary {
-  display: inline-block;
-  padding: 11px 26px;
-  border-radius: 40px; /* pill shape like screenshot */
-  background-color: #e6f2e6;
-  color: #131313;
-  border: 2px solid #7fbf7f;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-}
+/* Image layout */
 
-a.button.secondary:hover {
-  background-color: #28a745;   /* green */
-  color: white;
-  transform: translateY(-3px); /* lift effect */
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-/* Only target paragraph that has picture */
-main .default-content-wrapper p:has(picture) {
-  display: flex;
-  justify-content: flex-start;
-}
-
-/* Image 
-
-/* Keep wrapper normal */
 main .default-content-wrapper {
   display: block;
 }
 
-/* Make only image paragraphs horizontal */
+.default-content-wrapper p {
+  color: #555;
+  font-size: 18px;
+}
+
+/* Paragraphs containing image */
 main .default-content-wrapper p:has(picture) {
   display: inline-block;
   margin-right: 30px;
+}
+
+.default-content-wrapper p:nth-of-type(2) {
+  color: black;
+  font-weight: bold;
 }
 
 /* Image styling */
@@ -326,74 +306,33 @@ main .default-content-wrapper picture img {
 /* Hover effect */
 main .default-content-wrapper picture img:hover {
   transform: scale(1.08);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-}
-/*List------------------------------------------------------------------------------------*/
-
-/* Main heading */
-#list {
-  color: #2c3e50;
-  transition: 0.3s ease;
+  box-shadow: 0 15px 35px rgb(0 0 0 / 30%);
 }
 
-#list:hover {
-  color: #4a6cf7;
-}
+/* Hero section */
 
-/* Paragraph styling */
-.default-content-wrapper p {
-  color: #555;
-  font-size: 18px;
-}
-
-/* Special styling for "1 Auto-GPT:" */
-.default-content-wrapper p:nth-of-type(2) {
-  color: black;
-  font-weight: bold;
-}
-
-/* List styling */
-.default-content-wrapper ul {
-  padding-left: 20px;
-}
-
-.default-content-wrapper ul li {
-  color: #333;
-  margin-bottom: 8px;
-  transition: 0.3s ease;
-}
-
-/* Hover effect on list items */
-.default-content-wrapper ul li:hover {
-  color: #4a6cf7;
-  transform: translateX(5px);
-}
-
-/* Hero SECTION CSS-------------------------------------------------------------------------*/
-
-/* Make hero section vertical */
 .hero-container {
   display: flex;
-  flex-direction: column;   /* stack items vertically */
+  flex-direction: column;
 }
 
-/* Make heading full width */
 .hero-container .default-content-wrapper {
   width: 100%;
 }
 
-/* Optional spacing below heading */
 .hero-container h1 {
   margin-bottom: 30px;
 }
 
-/* Make image section full width */
 .hero-wrapper {
   width: 100%;
+  overflow: hidden;
 }
-#welcome-to-my-hero-block- {
-  color:darkkhaki;
+
+#welcome-to-my-hero-block {
+  color: darkkhaki;
 }
+
 .hero.block {
   transition: transform 0.4s ease-in-out;
 }
@@ -402,56 +341,66 @@ main .default-content-wrapper picture img:hover {
   transform: scale(1.05);
 }
 
-.hero-wrapper {
-  overflow: hidden;
+/* Metadata section */
+
+.section.metadata {
+  background: #191818;
+  padding: 30px;
+  margin: 50px auto;
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 10%);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fade-up 0.9s ease-out forwards;
+  transition: all 0.4s ease;
 }
 
+.section.metadata p {
+  font-size: 17px;
+  color: #efeeee;
+  line-height: 1.8;
+}
 
-/* Columns CSS--------------------------------------------------------------------------------*/
-
-
-
-/* 3 Column Layout */
-
+/* Columns section */
 
 .columns.block.columns-3-cols > div {
   display: flex;
   gap: 30px;
-  align-items: stretch;   /* makes all cards equal height */
+  align-items: stretch;
 }
-/* Card Styling */
+
 .columns.block.columns-3-cols > div > div {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background:rgb(240, 130, 130); 
+  background: rgb(240 130 130);
   padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 8%);
   transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-up 0.8s ease both;
 }
-/* Card hover effect */
+
 .columns.block.columns-3-cols > div > div:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px rgb(0 0 0 / 15%);
 }
 
-
-/* Image Styling */
 .columns.block.columns-3-cols img {
   width: 100%;
-  height: 220px;           /* same height for all images */
-  object-fit: cover;       /* keeps image ratio clean */
+  height: 220px;
+  object-fit: cover;
   border-radius: 12px;
   transition: transform 0.4s ease-in-out;
 }
 
-/* Image hover zoom */
 .columns.block.columns-3-cols img:hover {
   transform: scale(1.05);
 }
 
-/* Text Styling */
 .columns.block.columns-3-cols h2 {
   font-size: 24px;
   margin: 15px 0 10px;
@@ -462,14 +411,8 @@ main .default-content-wrapper picture img:hover {
 .columns.block.columns-3-cols p {
   font-size: 16px;
   line-height: 1.6;
-  color: #ffffff;
-  flex-grow: 1;   /* ensures equal height alignment */
-}
-/* Fade-in Animation */
-.columns.block.columns-3-cols > div > div {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease both;
+  color: #fff;
+  flex-grow: 1;
 }
 
 .columns.block.columns-3-cols > div > div:nth-child(1) {
@@ -484,48 +427,64 @@ main .default-content-wrapper picture img:hover {
   animation-delay: 0.6s;
 }
 
-@keyframes fadeUp {
+@keyframes fade-up {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/*Section metadata ---------------------*/
-.section.metadata {
-  background: #191818;
-  padding: 30px;
-  margin: 50px auto;
-  max-width: 900px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+/* List section */
 
-  /* Animation initial state */
-  opacity: 0;
-  transform: translateY(40px);
-
-  /* Smooth animation */
-  animation: fadeUp 0.9s ease-out forwards;
-  transition: all 0.4s ease;
+#list {
+  color: #2c3e50;
+  transition: 0.3s ease;
 }
 
-/* Text styling */
-.section.metadata p {
-  font-size: 17px;
-  color: #efeeee;
-  line-height: 1.8;
+#list:hover {
+  color: #4a6cf7;
 }
 
-/* Hover lift effect */
-.section.metadata:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+.default-content-wrapper ul {
+  padding-left: 20px;
 }
 
-/* Keyframes */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.default-content-wrapper ul li {
+  color: #333;
+  margin-bottom: 8px;
+  transition: 0.3s ease;
+}
+
+.default-content-wrapper ul li:hover {
+  color: #4a6cf7;
+  transform: translateX(5px);
+}
+
+/* Button */
+
+a.button.secondary {
+  display: inline-block;
+  padding: 11px 26px;
+  border-radius: 40px;
+  background-color: #e6f2e6;
+  color: #131313;
+  border: 2px solid #7fbf7f;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+a.button.secondary:hover {
+  background-color: #28a745;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgb(0 0 0 / 20%);
+}
+
+/* MOST SPECIFIC selector LAST */
+
+#welcome-to-my-site img {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+  display: block;
 }

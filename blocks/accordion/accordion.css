@@ -3,7 +3,7 @@
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   margin-bottom: 16px;
-  background: #ffffff;
+  background: #fff;
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -30,6 +30,7 @@
 }
 
 /* Custom Arrow */
+
 /* Custom Arrow */
 .accordion details summary::after {
   content: '+';
@@ -46,9 +47,10 @@
 .accordion details[open] summary::after {
   content: '−';
 }
+
 /* Body */
 .accordion .accordion-item-body {
-  padding: 0 20px 20px 20px;
+  padding: 0 20px 20px;
   font-size: 16px;
   color: #555;
   line-height: 1.6;
@@ -56,11 +58,12 @@
 }
 
 /* Smooth Animation */
-@keyframes slideDown {
+@keyframes slide-down {
   from {
     opacity: 0;
     transform: translateY(-5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

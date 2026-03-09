@@ -6,10 +6,10 @@
 .contact-form {
   max-width: 500px;
   margin: auto;
-  background: #ffffff;
+  background: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
 }
 
 .form-group {
@@ -23,6 +23,13 @@
   color: #333;
 }
 
+/* generic selector FIRST */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* more specific selector AFTER */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -37,11 +44,6 @@
 .contact-form textarea:focus {
   border-color: #1473e6;
   outline: none;
-}
-
-textarea {
-  min-height: 120px;
-  resize: vertical;
 }
 
 .submit-btn {

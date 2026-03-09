@@ -23,7 +23,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgb(0 0 0 / 40%);
 }
 
 .play-button {
