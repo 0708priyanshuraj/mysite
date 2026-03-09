@@ -54,7 +54,6 @@ export default function decorate(block) {
     } catch (error) {
       message.innerText = '⚠️ Error submitting form!';
       message.style.color = 'red';
-      console.error(error);
     }
   });
 }
